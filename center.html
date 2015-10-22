@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Facescores</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/common.css" rel="stylesheet" />
+		<link href="css/center.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/swiper.3.1.2.min.css" />
+	</head>
+
+	<body>
+		<header>
+			<div class="width90">
+				<div class="head_img">
+					<img src="images/es.jpg" alt="" />
+				</div>
+				<div id="age"><span>23</span></div>
+				<div class="mood">
+					<p>本大爷要炸了地球！！！不要拦我~</p>
+				</div>
+				
+			</div>		
+		</header>
+		<div class="mui_content">
+			<div class="user_info">
+					<ul>
+						<li class="name"><span>南小鸟</span></li>
+						<li class="placeName"><img src="images/content/Cursor.png" alt="" /><span>日本东京</span></li>
+						<li class="sign"><span>射手座</span></li>
+					</ul>
+				</div>
+			<div class="tag">
+				<div class="width90">
+					<span class="tag_icon"></span>
+					<div class="tag_name">
+						<ul>
+							<li id="ml0"><span>狂</span></li>
+							<li><span>炫炫</span></li>
+							<li><span>酷酷霸霸</span></li>
+						</ul>
+						<a href="javascript:;" id="addTag"><img src="images/content/add.png" / class="add_tag"></a>
+					</div>
+					<a href="javascript:;" id="moreTag"><img src="images/content/more.png" / class="more_tag"></a>
+				</div>
+			</div>
+			<div class="album">
+				<a href="javascript:;" id="slidePrev"><img src="images/content/slidePrev.png" /></a>
+				<a href="javascript:;" id="slideNext"><img src="images/content/slideNext.png" /></a>
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<a href="" class="slide_a"><img src="images/img2.png" /></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="" class="slide_a"><img src="images/img2.png" /></a>
+						</div>
+						<div class="swiper-slide">
+							<a href="" class="slide_a"><img src="images/img2.png" /></a>
+						</div>
+					</div>
+					<!-- 如果需要滚动条 -->
+					<div class="swiper-scrollbar"></div>
+				</div>
+			</div>
+			<div class="btn">
+				<a href="">一起来嘛~</a>
+			</div>
+			<div class="infoNum">
+				<div class="col like">
+					<div class="icon like_bg">
+
+					</div>
+					<p>喜欢</p>
+					<p id="like">
+						1234
+					</p>
+				</div>
+				<div class="col browse">
+					<div class="icon browse_bg">
+
+					</div>
+					<p>浏览</p>
+					<p id="Browse">
+						23435
+					</p>
+				</div>
+				<div class="col wantSee">
+					<div class="icon wantSee_bg">
+
+					</div>
+					<p>喜欢</p>
+					<p id="wantSee">
+						34356
+					</p>
+				</div>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript" src="js/swiper.3.1.2.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			var header_w = document.body.clientWidth;
+			var mySwiper = new Swiper('.swiper-container', {
+				direction: 'horizontal',
+				loop: true,
+				effect: 'coverflow',
+				grabCursor: true,
+				centeredSlides: true,
+				slidesPerView: 'auto',
+				coverflow: {
+					rotate: 50,
+					stretch: 0,
+					depth: 100,
+					modifier: 1,
+					slideShadows: true
+				},
+				// 如果需要滚动条
+				scrollbar: '.swiper-scrollbar',
+			})
+			 $('#slidePrev').click(function() {
+				mySwiper.slidePrev();
+			})
+			 $('#slideNext').click(function() {
+				mySwiper.slideNext();
+			})
+		</script>
+	</body>
+
+</html>

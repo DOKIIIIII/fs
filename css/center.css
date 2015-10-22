@@ -1,0 +1,245 @@
+body {
+	line-height: normal;
+	background-color: #FFFFFF;
+}
+header {
+	background-color: #f9dd93;
+    width: 100%;
+    height: 60px;
+}
+.width90 {
+	width: 90%;
+	margin: 0 auto;
+	position: relative;
+}
+.width70 {
+	width: 70%;
+	margin: 0 auto;
+}
+.head_img {
+	width: 3.5em;
+    display: inline-block;
+    margin-top: .1em;
+}
+.head_img img {
+	    width: 100%;
+    border-radius: 100%;
+        border: 1px solid #FFF;
+}
+.mood {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    border-radius: .3em;
+    width: 70%;
+    vertical-align: -webkit-baseline-middle;
+    height: 40px;
+    padding: 0 2%;
+    margin-left: 1.25em;
+}
+.mood:after {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-right-color: rgba(255,255,255,1);
+    border-width: 5px 15px 5px 0;
+}
+.mood p {
+    color: #242424;
+    font-size: .6em;
+    display: inline-block;
+}
+.user_info {
+    border-top: 1px solid #EAEAEA;
+    border-bottom: 1px solid #EAEAEA;
+        height: 20px;
+}
+.user_info ul li {
+	display: inline-block;
+    width: 32.2%;
+    text-align: center;
+    color: #444444;
+    float: left;
+}
+.user_info ul li span{
+	font-size: .7em;
+}
+.name,
+.placeName,
+.sign {
+	font-size: .9em;
+}
+.name{
+	border-right: 1px solid #EAEAEA;
+}
+.sign{
+	border-left: 1px solid #EAEAEA;
+}
+.placeName img{
+	width: 1em;
+	position: relative;
+	top: -.15em;
+}
+#age {
+    width: 20px;
+    height: 10px;
+    background: url(../images/content/sex_female.png) no-repeat center;
+    background-size: cover;
+    text-align: right;
+    position: absolute;
+    top: 1em;
+    left: 3.5em;
+}
+#age span {
+    font-size: .5em;
+    color: #FFF;
+    vertical-align: top;
+    position: relative;
+    /* top: -.3em; */
+}
+.place {
+	width: 1em;
+	height: 1em;
+	background: url(../images/content/Cursor.png) no-repeat center;
+	background-size: contain;
+	position: relative;
+	top: .2em;
+}
+.tag {
+	border-bottom: .1em solid #cecece;
+}
+.tag .tag_icon {
+	background: url(../images/content/tag.png) no-repeat center;
+	width: 1.5em;
+	height: 1.5em;
+	display: inline-block;
+	background-size: contain;
+}
+.tag ul {
+display: inline-block;
+    position: relative;
+    top: .2em;
+    width: 85%;
+}
+.tag ul li {
+background-color: #EAEAEA;
+    width: 30%;
+    text-align: center;
+    display: inline-block;
+    color: #444444;
+}
+.tag ul li span{
+	font-size: .6em;
+	vertical-align: middle;
+}
+.tag_name {
+    display: inline-block;
+    vertical-align: top;
+    width: 81%;
+    text-align: left;
+}
+#ml0 {
+	margin-left: 0;
+}
+.album {
+	background-color: #605c62;
+	position: relative;
+}
+.swiper-slide img {
+	width: 100%;
+	display: block;
+	margin: 0 auto;
+	padding: .5em;
+	background-color: #FFFFFF;
+}
+.btn {
+    width: 59%;
+    margin: .5em auto .5em;
+}
+.btn a {
+    color: #BF558A;
+    padding: .2em 1em;
+    font-size: 1em;
+    display: block;
+    text-align: center;
+    background-color: #f9dd93;
+    font-size: .8em;
+}
+.icon {
+    width: 1em;
+    height: 1em;
+    margin: 0 auto;
+}
+.like{
+	background-color: #f79f8b;
+	border-right: 1px solid #fff;
+}
+.browse{
+	background-color: #8bd5e1;
+}
+.wantSee{
+	background-color: #ffc576;
+	border-left: 1px solid #fff;
+}
+.col {
+    width: 33.33%;
+    float: left;
+    text-align: center;
+    background-color: #EAEAEA;
+}
+.like_bg {
+	background: url(../images/content/heart_act.png) no-repeat center center;
+	background-size: contain;
+}
+.browse_bg {
+	background: url(../images/footer/Eye.png) no-repeat center center;
+	background-size: contain;
+}
+.wantSee_bg {
+	background: url(../images/content/wantSee.png) no-repeat center center;
+	background-size: contain;
+}
+.add_tag {
+	width: 1.7em;
+}
+.more_tag {
+	width: 1.7em;
+}
+#moreTag {
+	position: absolute;
+	right: 0;
+}
+.infoNum span{
+    color: #444444;
+    font-size: .6em;
+}
+.infoNum p{
+    color: #444444;
+    font-size: .6em;
+}
+.slide_a {
+	display: block;
+	width: 64%;
+	margin: .5em auto;
+	box-shadow: 0 0 .5em #252020;
+}
+#slidePrev {
+	position: absolute;
+	z-index: 10000;
+	top: 40%;
+}
+#slideNext {
+	position: absolute;
+	z-index: 10000;
+	top: 40%;
+	right: 0;
+}
+#slidePrev img,
+#slideNext img {
+	width: 2.5em;
+}
