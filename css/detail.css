@@ -10,6 +10,7 @@ body{
 }
 .mui-bar-tab{
 	display: block;
+	height: 70px;
 }
 header{
 	border: transparent;
@@ -51,7 +52,7 @@ header{
 footer{
 	width: 100%;
 	height: 3.125em;
-	background: url(../images/footer/bottom-bg.png) repeat-x  bottom;
+	background: url("../images/footer/bottom-bg.png") repeat-x  bottom;
 	border: none;
 }
 .footer_w{
@@ -136,9 +137,6 @@ footer{
 	background: url(../images/content/low.png) no-repeat center bottom;
 	background-size: 41%;
 }
-nav,header{
-	
-}
 .point i{
 	font-size: 1.6em;
 	font-style: normal;
@@ -153,9 +151,15 @@ nav,header{
     padding-top: 0;
     }
 #bottom{
-	height: 40px;
-	background-color: rgba(249, 249, 249, 0.8);
+    height: 40px;
+    background-color: rgba(249, 249, 249, 0.8);
+    position: absolute;
+    bottom: 70px;
 }
 #bottom img{
 	vertical-align: super;
+}
+.rank{
+	float: left;
+	font-size: .8em;
 }
