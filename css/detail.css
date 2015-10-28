@@ -53,6 +53,7 @@ footer{
 	width: 100%;
 	height: 3.125em;
 	background: url("../images/footer/bottom-bg.png") repeat-x  bottom;
+	background-size: contain;
 	border: none;
 }
 .footer_w{
@@ -162,4 +163,5 @@ footer{
 .rank{
 	float: left;
 	font-size: .8em;
+	    margin-left: 10%;
 }
