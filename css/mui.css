@@ -1,6 +1,6 @@
 /*!
  * =====================================================
- * Mui v2.3.0 (https://github.com/dcloudio/mui)
+ * Mui v2.5.0 (http://dev.dcloud.net.cn/mui)
  * =====================================================
  */
 
@@ -282,8 +282,8 @@ th
 body
 {
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
-    font-size: 16px;
-/*    line-height: 21px;*/
+    font-size: 17px;
+    line-height: 21px;
 
     color: #000;
     background-color: #efeff4;
@@ -1447,14 +1447,14 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
     right: 0;
     left: 0;
 
-    /*height: 44px;*/
+    height: 44px;
     padding-right: 10px;
     padding-left: 10px;
 
     border-bottom: 0;
-    /*background-color: #f7f7f7;*/
-    /*-webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .85);
-            box-shadow: 0 0 1px rgba(0, 0, 0, .85);*/
+    background-color: #f7f7f7;
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, .85);
+            box-shadow: 0 0 1px rgba(0, 0, 0, .85);
 
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
@@ -1557,7 +1557,7 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 {
     bottom: 0;
 
-    /*display: table;*/
+    display: table;
 
     width: 100%;
     height: 50px;
@@ -1954,6 +1954,10 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 
     background-color: #c8c7cc;
 }
+.mui-table-view:before
+{
+    top: -1px;
+}
 
 .mui-table-view-icon .mui-table-view-cell .mui-navigate-right .mui-icon
 {
@@ -2067,8 +2071,6 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
     overflow: hidden;
 
     padding: 11px 15px;
-
-    background-color: inherit;
 
     -webkit-touch-callout: none;
 }
@@ -3914,6 +3916,7 @@ select:focus
     height: 100%;
 
     vertical-align: top;
+    white-space: normal;
 }
 .mui-slider .mui-slider-group .mui-slider-item > a:not(.mui-control-item)
 {
