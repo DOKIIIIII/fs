@@ -6,34 +6,47 @@ header {
 }
 .mui-bar {
 	border-bottom: 1px solid #AAAAAA;
+	z-index: 999;
 }
 .mui-bar-nav {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
 .header_list {
-	width: 70%;
+	width: 100%;
 	margin: 0 auto;
 }
-.header_list li {
-	width: 25%;
-	float: left;
+.cityFilter{
+	width: 42.5px;
+    float: left;
+}
+.rightItem{
+	width: 42.5px;
+    float: right;
+
+}
+#rightTop{
+    background: url(../images/header/place.png) no-repeat center center;
+	background-size: 80%;	
+}
+.rightFilter{
+	width: 42.5px;
 }
 #place {
 	background: url(../images/header/place.png) no-repeat center center;
-	background-size: 50%;
+	background-size: 80%;
 }
 #male {
 	background: url(../images/header/male.png) no-repeat center center;
-	background-size: 50%;
+	background-size: 80%;
 }
 #female {
 	background: url(../images/header/female.png) no-repeat center center;
-	background-size: 50%;
+	background-size: 80%;
 }
 #color {
 	background: url(../images/header/color.png) no-repeat center center;
-	background-size: 50%;
+	background-size: 80%;
 }
 header a {
 	display: block;
