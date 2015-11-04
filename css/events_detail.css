@@ -44,8 +44,35 @@ footer a {
 .events_card{
 	margin-top: 1em;;
 }
-.events_card_img img{
+.events_detail_imgBox img{
 	width: 100%;
 	display: block;
 	height: auto;
+}
+.events_detail_title{
+	text-align: center;
+    margin-top: .2em;
+}
+.events_detail_left{
+	width: 95%;
+	margin: 0 auto;
+}
+.events_detail_left span{
+	font-size: .9em;
+}
+.events_detail_content{
+	width: 95%;
+	margin: 0 auto;
+}
+.events_apply{
+	width: 95%;
+	margin: 5em auto 3em;
+}
+.events_apply button{
+	width: 100%;
+	background-color: #007AFF;
+	color: #FFFFFF;
+	height: 3em;
+	border: none;
+	
 }
