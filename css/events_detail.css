@@ -1,0 +1,51 @@
+@charset "UTF-8";
+.mui-bar {
+	border-bottom: 1px solid #AAAAAA;
+	z-index: 999;
+}
+.mui-bar-nav {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+#home {
+	background: url(../images/footer/Home.png) no-repeat center center;
+}
+#msg {
+	background: url(../images/footer/msg.png) no-repeat center center;
+	margin-right: 1em;
+}
+#camera {
+	background: url(../images/footer/camera.png) no-repeat center center;
+}
+#others {
+	background: url(../images/footer/others.png) no-repeat center center;
+	margin-left: 1em;
+}
+#personal {
+	background: url(../images/footer/personal.png) no-repeat center center;
+}
+footer a {
+	display: block;
+	height: 1.8em;
+}
+.mui-bar-tab {
+	height: 40px;
+	background-color: #F9F9F9;
+}
+.mui-bar-tab .mui-tab-item {
+	height: 40px;
+}
+.events_list{
+	margin-bottom: 3em;
+}
+.events_card_date{
+	text-align: center;
+}
+.events_card{
+	margin-top: 1em;;
+}
+.events_card_img img{
+	width: 100%;
+	display: block;
+	height: auto;
+}
