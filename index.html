@@ -44,7 +44,7 @@
 			<div id="rightFilter" class="mui-modal">
 				<header class="mui-bar mui-bar-nav">
 					<h1 class="mui-title">筛选条件</h1>
-					<a class="mui-icon mui-icon-close" href="#rightFilter"></a>
+					<a class="mui-icon mui-icon-close" href="#rightFilter" id="closeModal"></a>
 				</header>
 				<div class="mui-content" style="height: 568px;">
 					<div class="mui-content-padded">
@@ -214,6 +214,25 @@
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
 			var screenHeight = document.documentElement.clientHeight;
+			var rightTop = document.getElementById("rightTop");
+			var flag;
+			var rightFilter =document.getElementById("rightFilter");
+			rightTop.addEventListener("tap",function(){
+				flag = 1;
+				
+			});
+			var closeModal = document.getElementById("closeModal");
+			closeModal.addEventListener("tap",function(){
+				flag = 0;
+				
+			});
+			
+				rightFilter.addEventListener("touchmove",function(e) {
+					if (flag == 1){
+						e.preventDefault();
+					}
+					
+				});
 			
 		</script>
 	</body>
