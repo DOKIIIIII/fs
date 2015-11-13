@@ -198,3 +198,12 @@ footer a {
 	display: block;
 	height: 1.8em;
 }
+#closeModal{
+	width: ;
+}
+.mui-input-row label{
+	width: 70px;
+}
+.inline-range-val{
+	vertical-align: -webkit-baseline-middle;
+}

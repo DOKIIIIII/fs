@@ -42,165 +42,189 @@
 		<div class="mui-content-padded">
 			<!--右上角弹出框-->
 			<div id="rightFilter" class="mui-modal">
-				<header class="mui-bar mui-bar-nav">
+				<div class="mui-bar mui-bar-nav">
 					<h1 class="mui-title">筛选条件</h1>
 					<a class="mui-icon mui-icon-close" href="#rightFilter" id="closeModal"></a>
-				</header>
-				<div class="mui-content" style="height: 568px;">
-					<div class="mui-content-padded">
-						
+				</div>
+				<div class="mui-content" style="height: 100%;">
+					<h5 style="text-align: center;">性别选择</h5>
+					<div class="mui-card">
+						<form class="mui-input-group">
+							<div class="mui-input-row mui-radio">
+								<label>男</label>
+								<input name="radio1" type="radio" checked>
+							</div>
+							<div class="mui-input-row mui-radio">
+								<label>女</label>
+								<input name="radio1" type="radio">
+							</div>
+						</form>
+					</div>
+					<h5 style="text-align: center;">档位选择</h5>
+					<div class="mui-card">
+						<form class="mui-input-group">
+							<div class="mui-input-row mui-input-range">
+								<label>颜色</label><span id='inline-range-val' class="inline-range-val">0</span>
+								<input type="range" id='inline-range' value="0" min="0" max="7">
+							</div>
+							<div class="mui-input-row mui-input-range">
+								<label>分数</label><span id='inline-range2-val' class="inline-range-val">0</span>
+								<input type="range" id='inline-range2' value="0" min="0" max="10">
+							</div>
+						</form>
 					</div>
 				</div>
-			</div>
-			<!--右上角弹框end-->
-			<div class="mui-table-view mui-grid-view">
-				<div class="mui-table-view-cell mui-media mui-col-xs-6">
-					<div class="imgbox">
-						<a href="#"><img src="images/image1.png" alt=""></a>
-					</div>
-					<div class="imgtext">
-						<div class="userId">
-							<div class="id fl"><span>小鸟游</span></div>
-							<div class="age fl"><span class="sex">25</span></div>
-							<div class="point fr"><i>9</i><em>.25</em></div>
-						</div>
-						<div class="userInfo">
-							<div class="fire"><img src="images/content/fire.png" alt="">
-								<div>12</div>
-							</div>
-							<div class="heart"><img src="images/content/heart.png" alt="">
-								<div>32</div>
-							</div>
-							<div class="low"><img src="images/content/low.png" alt="">
-								<div>34</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell mui-media mui-col-xs-6">
-					<div class="imgbox">
-						<a href="#"><img src="images/image1.png" alt=""></a>
-					</div>
-					<div class="imgtext">
-						<div class="userId">
-							<div class="id fl"><span>小鸟游</span></div>
-							<div class="age fl"><span class="sex">25</span></div>
-							<div class="point fr"><i>9</i><em>.25</em></div>
-						</div>
-						<div class="userInfo">
-							<div class="fire"><img src="images/content/fire.png" alt="">
-								<div>12</div>
-							</div>
-							<div class="heart"><img src="images/content/heart.png" alt="">
-								<div>32</div>
-							</div>
-							<div class="low"><img src="images/content/low.png" alt="">
-								<div>34</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell mui-media mui-col-xs-6">
-					<div class="imgbox">
-						<a href="#"><img src="images/image1.png" alt=""></a>
-					</div>
-					<div class="imgtext">
-						<div class="userId">
-							<div class="id fl"><span>小鸟游</span></div>
-							<div class="age fl"><span class="sex">25</span></div>
-							<div class="point fr"><i>9</i><em>.25</em></div>
-						</div>
-						<div class="userInfo">
-							<div class="fire"><img src="images/content/fire.png" alt="">
-								<div>12</div>
-							</div>
-							<div class="heart"><img src="images/content/heart.png" alt="">
-								<div>32</div>
-							</div>
-							<div class="low"><img src="images/content/low.png" alt="">
-								<div>34</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell mui-media mui-col-xs-6">
-					<div class="imgbox">
-						<a href="#"><img src="images/image1.png" alt=""></a>
-					</div>
-					<div class="imgtext">
-						<div class="userId">
-							<div class="id fl"><span>小鸟游</span></div>
-							<div class="age fl"><span class="sex">25</span></div>
-							<div class="point fr"><i>9</i><em>.25</em></div>
-						</div>
-						<div class="userInfo">
-							<div class="fire"><img src="images/content/fire.png" alt="">
-								<div>12</div>
-							</div>
-							<div class="heart"><img src="images/content/heart.png" alt="">
-								<div>32</div>
-							</div>
-							<div class="low"><img src="images/content/low.png" alt="">
-								<div>34</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell mui-media mui-col-xs-6">
-					<div class="imgbox">
-						<a href="#"><img src="images/image1.png" alt=""></a>
-					</div>
-					<div class="imgtext">
-						<div class="userId">
-							<div class="id fl"><span>小鸟游</span></div>
-							<div class="age fl"><span class="sex">25</span></div>
-							<div class="point fr"><i>9</i><em>.25</em></div>
-						</div>
-						<div class="userInfo">
-							<div class="fire"><img src="images/content/fire.png" alt="">
-								<div>12</div>
-							</div>
-							<div class="heart"><img src="images/content/heart.png" alt="">
-								<div>32</div>
-							</div>
-							<div class="low"><img src="images/content/low.png" alt="">
-								<div>34</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<div class="mui-table-view-cell mui-media mui-col-xs-6">
-					<div class="imgbox">
-						<a href="#"><img src="images/image1.png" alt=""></a>
-					</div>
-					<div class="imgtext">
-						<div class="userId">
-							<div class="id fl"><span>小鸟游</span></div>
-							<div class="age fl"><span class="sex">25</span></div>
-							<div class="point fr"><i>9</i><em>.25</em></div>
-						</div>
-						<div class="userInfo">
-							<div class="fire"><img src="images/content/fire.png" alt="">
-								<div>12</div>
-							</div>
-							<div class="heart"><img src="images/content/heart.png" alt="">
-								<div>32</div>
-							</div>
-							<div class="low"><img src="images/content/low.png" alt="">
-								<div>34</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-
 			</div>
 		</div>
+		<!--右上角弹框end-->
+		<div class="mui-table-view mui-grid-view">
+			<div class="mui-table-view-cell mui-media mui-col-xs-6">
+				<div class="imgbox">
+					<a href="#"><img src="images/image1.png" alt=""></a>
+				</div>
+				<div class="imgtext">
+					<div class="userId">
+						<div class="id fl"><span>小鸟游</span></div>
+						<div class="age fl"><span class="sex">25</span></div>
+						<div class="point fr"><i>9</i><em>.25</em></div>
+					</div>
+					<div class="userInfo">
+						<div class="fire"><img src="images/content/fire.png" alt="">
+							<div>12</div>
+						</div>
+						<div class="heart"><img src="images/content/heart.png" alt="">
+							<div>32</div>
+						</div>
+						<div class="low"><img src="images/content/low.png" alt="">
+							<div>34</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="mui-table-view-cell mui-media mui-col-xs-6">
+				<div class="imgbox">
+					<a href="#"><img src="images/image1.png" alt=""></a>
+				</div>
+				<div class="imgtext">
+					<div class="userId">
+						<div class="id fl"><span>小鸟游</span></div>
+						<div class="age fl"><span class="sex">25</span></div>
+						<div class="point fr"><i>9</i><em>.25</em></div>
+					</div>
+					<div class="userInfo">
+						<div class="fire"><img src="images/content/fire.png" alt="">
+							<div>12</div>
+						</div>
+						<div class="heart"><img src="images/content/heart.png" alt="">
+							<div>32</div>
+						</div>
+						<div class="low"><img src="images/content/low.png" alt="">
+							<div>34</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="mui-table-view-cell mui-media mui-col-xs-6">
+				<div class="imgbox">
+					<a href="#"><img src="images/image1.png" alt=""></a>
+				</div>
+				<div class="imgtext">
+					<div class="userId">
+						<div class="id fl"><span>小鸟游</span></div>
+						<div class="age fl"><span class="sex">25</span></div>
+						<div class="point fr"><i>9</i><em>.25</em></div>
+					</div>
+					<div class="userInfo">
+						<div class="fire"><img src="images/content/fire.png" alt="">
+							<div>12</div>
+						</div>
+						<div class="heart"><img src="images/content/heart.png" alt="">
+							<div>32</div>
+						</div>
+						<div class="low"><img src="images/content/low.png" alt="">
+							<div>34</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="mui-table-view-cell mui-media mui-col-xs-6">
+				<div class="imgbox">
+					<a href="#"><img src="images/image1.png" alt=""></a>
+				</div>
+				<div class="imgtext">
+					<div class="userId">
+						<div class="id fl"><span>小鸟游</span></div>
+						<div class="age fl"><span class="sex">25</span></div>
+						<div class="point fr"><i>9</i><em>.25</em></div>
+					</div>
+					<div class="userInfo">
+						<div class="fire"><img src="images/content/fire.png" alt="">
+							<div>12</div>
+						</div>
+						<div class="heart"><img src="images/content/heart.png" alt="">
+							<div>32</div>
+						</div>
+						<div class="low"><img src="images/content/low.png" alt="">
+							<div>34</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="mui-table-view-cell mui-media mui-col-xs-6">
+				<div class="imgbox">
+					<a href="#"><img src="images/image1.png" alt=""></a>
+				</div>
+				<div class="imgtext">
+					<div class="userId">
+						<div class="id fl"><span>小鸟游</span></div>
+						<div class="age fl"><span class="sex">25</span></div>
+						<div class="point fr"><i>9</i><em>.25</em></div>
+					</div>
+					<div class="userInfo">
+						<div class="fire"><img src="images/content/fire.png" alt="">
+							<div>12</div>
+						</div>
+						<div class="heart"><img src="images/content/heart.png" alt="">
+							<div>32</div>
+						</div>
+						<div class="low"><img src="images/content/low.png" alt="">
+							<div>34</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="mui-table-view-cell mui-media mui-col-xs-6">
+				<div class="imgbox">
+					<a href="#"><img src="images/image1.png" alt=""></a>
+				</div>
+				<div class="imgtext">
+					<div class="userId">
+						<div class="id fl"><span>小鸟游</span></div>
+						<div class="age fl"><span class="sex">25</span></div>
+						<div class="point fr"><i>9</i><em>.25</em></div>
+					</div>
+					<div class="userInfo">
+						<div class="fire"><img src="images/content/fire.png" alt="">
+							<div>12</div>
+						</div>
+						<div class="heart"><img src="images/content/heart.png" alt="">
+							<div>32</div>
+						</div>
+						<div class="low"><img src="images/content/low.png" alt="">
+							<div>34</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
 		<!--底栏-->
 		<nav class="mui-bar mui-bar-tab">
 			<a class="mui-tab-item mui-active" href="#tabbar" id="home"> <span class="mui-icon "></span></a>
@@ -216,24 +240,35 @@
 			var screenHeight = document.documentElement.clientHeight;
 			var rightTop = document.getElementById("rightTop");
 			var flag;
-			var rightFilter =document.getElementById("rightFilter");
-			rightTop.addEventListener("tap",function(){
+			var rightFilter = document.getElementById("rightFilter");
+			rightTop.addEventListener("tap", function() {
 				flag = 1;
-				
 			});
 			var closeModal = document.getElementById("closeModal");
-			closeModal.addEventListener("tap",function(){
+			closeModal.addEventListener("tap", function() {
 				flag = 0;
-				
 			});
-			
-				rightFilter.addEventListener("touchmove",function(e) {
-					if (flag == 1){
-						e.preventDefault();
+			rightFilter.addEventListener("touchmove", function(e) {
+				if (flag == 1) {
+					e.preventDefault();
+				}
+			});
+			//监听input事件，获取range的value值，也可以直接element.value获取该range的值
+			var rangeList = document.querySelectorAll('input[type="range"]');
+			for (var i = 0, len = rangeList.length; i < len; i++) {
+				rangeList[i].addEventListener('input', function() {
+					var range_val = this.value;
+					alert(range_val);
+					if (range_val == 1) {
+						document.getElementById('inline-range-val').innerHTML="王者";
 					}
-					
-				});
+						 
+					}
+				);
+			}
 			
+			
+
 		</script>
 	</body>
 
