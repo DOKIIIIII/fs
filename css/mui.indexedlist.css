@@ -12,6 +12,7 @@
 	padding: 0px;
 	overflow-y: auto;
 	border: none;
+	font-size: 14px;
 }
 .mui-indexed-list-inner::-webkit-scrollbar {
 	width: 0px;

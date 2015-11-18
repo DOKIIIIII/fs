@@ -52,7 +52,7 @@ header {
 	background-size: 80%;
 }
 .header_list a {
-	display: inline-block;
+	display: block;
 	width: 100%;
 	height: 2.5em;
 }
@@ -201,31 +201,22 @@ footer a {
 	display: block;
 	height: 1.8em;
 }
-#closeModal{
-	width: ;
-}
-.mui-input-row label{
-	width: 60px;
-	padding: 10px 5px 10px 15px;
-}
 .inline-range-val{
 	vertical-align: -webkit-baseline-middle;
-	font-size: .3em;
-	
+	font-size: .8em;
+}
+.mui-input-range label ~ input[type='range'] {
+    width: 60%;
 }
 .mui-input-range .mui-tooltip{
 	z-index: -99;
 }
-.mlr15{
+body .mui-input-row .input-range-label{
+	width: 70px;
+}
+.btn-width{
 	margin: 40px 15px 0;
 }
-mui-off-canvas-left{
-	width: 100%;
-	/*height: 100%;*/
-}
-.mui-indexed-list-bar{
-	z-index: 9999;
-}
-.mui-indexed-list-inner{
-	z-index: 9;
+.mui-btn-block{
+	padding: 10px;
 }

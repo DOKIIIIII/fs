@@ -81,7 +81,7 @@
 				pointElement = document.elementFromPoint(point.pageX, point.pageY);
 				if (pointElement) {
 					var group = pointElement.innerText;
-					if (group && group.length == 1) {
+					if (group && (group.length == 1|| group.length == 2)) {
 						pointElement.classList.add('active');
 						self.el.alert.innerText = group;
 						self.el.alert.classList.add('active');
