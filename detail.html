@@ -200,7 +200,7 @@
 				<div class="btn-width">
 					<button type="button" class="mui-btn mui-btn-primary mui-btn-block" id="setPoint">确定</button>
 				</div>-->
-				
+
 			</div>
 		</div>
 		<footer class="mui-bar mui-bar-tab">
@@ -258,7 +258,7 @@
 		<script src="js/mui.min.js"></script>
 		<script src="js/mui.zoom.js"></script>
 		<script src="js/mui.previewimage.js"></script>
-		<script type="text/javascript" src="js/nouislider.min.js" ></script>
+		<script type="text/javascript" src="js/nouislider.min.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			mui.init({
 				gestureConfig: {
@@ -280,19 +280,19 @@
 //				});
             var rangeSlider = document.getElementById('slider-range');
 
-noUiSlider.create(rangeSlider, {
-	start: [ 0 ],
-	range: {
-		'min': [  0 ],
-		'max': [ 1000 ]
-	}
-});
+            noUiSlider.create(rangeSlider, {
+	        start: [ 0 ],
+	        range: {
+		    'min': [  0 ],
+		    'max': [ 1000 ]
+	        }
+            });
 
-var rangeSliderValueElement = document.getElementById('slider-range-value');
+            var rangeSliderValueElement = document.getElementById('slider-range-value');
 
-rangeSlider.noUiSlider.on('update', function( values, handle ) {
-	rangeSliderValueElement.innerHTML = values[handle]/100;
-});
+            rangeSlider.noUiSlider.on('update', function( values, handle ) {
+	        rangeSliderValueElement.innerHTML = values[handle]/100;
+            });
 			//打分
 			jQuery("#setPoint").click(function() {
 				jQuery.ajax()
