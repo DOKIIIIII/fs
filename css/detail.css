@@ -153,7 +153,7 @@ footer{
     }
 #bottom{
     height: 40px;
-    /* background-color: rgba(249, 249, 249, 0.8); */
+     background-color: rgba(249, 249, 249, 0.2); 
     position: absolute;
     bottom: 63px;
 }

@@ -21,9 +21,16 @@
 				padding-left: 20px;
 			}
 			
-			#slider-range,#skipstep {
+			#slider-range,
+			#skipstep {
 				margin-top: 5px;
 				padding: 0 20px;
+			}
+			
+			.load {
+				display: none;
+				margin: .5em;
+				text-align: center;
 			}
 		</style>
 	</head>
@@ -55,6 +62,8 @@
 			<ul class="mui-table-view mui-grid-view" id="myTableView">
 
 			</ul>
+			<div class="load">
+				<p></p><img src="images/loading3.gif" height="32" width="32" alt=""></div>
 		</div>
 
 		<!--右上角弹出框-->
@@ -65,7 +74,7 @@
 			</div>
 			<div class="mui-content" style="height: 100%;">
 				<form class="mui-input-group">
-					<h5 style="text-align: center;">性别选择</h5>
+					<h5 style="text-align: center;" id="sexClick">性别选择</h5>
 					<div class="mui-card">
 						<div class="mui-input-row mui-radio">
 							<label>男</label>
@@ -84,13 +93,13 @@
 					<div class="mui-card">
 						<div class="mui-input-row mui-input-range">
 							<label class="input-range-label">颜色</label>
-							<span id="slider-range-value" class="inline-range-val"></span>
+							<span id="slider-range-value" class="inline-range-val">无</span>
 							<div id="slider-range"></div>
 						</div>
 						<div class="mui-input-row mui-input-range">
 							<label class="input-range-label">分数</label>
-							<span id='skip-value-lower' class="inline-range-val"></span>
-							<span id="skip-value-upper" class="inline-range-val"></span>
+							<span id='skip-value-lower' class="inline-range-val">0</span>&nbsp;~
+							<span id="skip-value-upper" class="inline-range-val">10</span>
 							<div id="skipstep"></div>
 						</div>
 					</div>
@@ -357,7 +366,7 @@
 			</div>
 		</div>
 		<!--城市筛选弹框end-->
-		<script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
 		<script src="js/mui.min.js"></script>
 		<script src="js/mui.indexedlist.js"></script>
 		<script src="json/index.js"></script>
@@ -419,7 +428,24 @@
 			});
 			var rangeSliderValueElement = document.getElementById('slider-range-value');
 			rangeSlider.noUiSlider.on('update', function(values, handle) {
-				rangeSliderValueElement.innerHTML = values[handle];
+				var range_val_color = values[handle];
+				if (range_val_color == 1.00) {
+					rangeSliderValueElement.innerHTML = "王者";
+				} else if (range_val_color == 2.00) {
+					rangeSliderValueElement.innerHTML = "钻石";
+				} else if (range_val_color == 3.00) {
+					rangeSliderValueElement.innerHTML = "白金";
+				} else if (range_val_color == 4.00) {
+					rangeSliderValueElement.innerHTML = "黄金";
+				} else if (range_val_color == 5.00) {
+					rangeSliderValueElement.innerHTML = "白银";
+				} else if (range_val_color == 6.00) {
+					rangeSliderValueElement.innerHTML = "青铜";
+				} else if (range_val_color == 7.00) {
+					rangeSliderValueElement.innerHTML = "新发";
+				} else {
+					rangeSliderValueElement.innerHTML = "无";
+				}
 			});
 			//分数档位
 			var skipSlider = document.getElementById('skipstep');
@@ -437,8 +463,52 @@
 				document.getElementById('skip-value-upper')
 			];
 			skipSlider.noUiSlider.on('update', function(values, handle) {
-				skipValues[handle].innerHTML = values[handle];
+				var range_val_point = values[handle];
+				if (range_val_point == 1.00) {
+					skipValues[handle].innerHTML = "1";
+				} else if (range_val_point == 2.00) {
+					skipValues[handle].innerHTML = "2";
+				} else if (range_val_point == 3.00) {
+					skipValues[handle].innerHTML = "3";
+				} else if (range_val_point == 4.00) {
+					skipValues[handle].innerHTML = "4";
+				} else if (range_val_point == 5.00) {
+					skipValues[handle].innerHTML = "5";
+				} else if (range_val_point == 6.00) {
+					skipValues[handle].innerHTML = "6";
+				} else if (range_val_point == 7.00) {
+					skipValues[handle].innerHTML = "7";
+				} else if (range_val_point == 8.00) {
+					skipValues[handle].innerHTML = "8";
+				} else if (range_val_point == 9.00) {
+					skipValues[handle].innerHTML = "9";
+				} else if (range_val_point == 10.00) {
+					skipValues[handle].innerHTML = "10";
+				}
 			});
+			//右上角筛选bug修复
+			var rightTop = document.getElementById("rightTop");
+			var sexClick = document.getElementById("sexClick");
+			rightTop.addEventListener("tap", function() {
+				$("#sexClick").click();
+			});
+			//上拉加载
+			$(function() {
+				//滑动加载
+				var page = 2;
+				var flag = true;
+
+				$(window).scroll(function() {
+					if ((document.documentElement.scrollHeight) == (document.documentElement.scrollTop | document.body.scrollTop) + document.documentElement.clientHeight) {
+						$('.load').show();
+						setTimeout(function() {
+							if (flag) {
+								//发出请求加载数据
+							}
+						}, 1000)
+					}
+				});
+			})
 		</script>
 	</body>
 
