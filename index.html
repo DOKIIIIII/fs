@@ -9,7 +9,23 @@
 		<link href="css/mui.css" rel="stylesheet" />
 		<link href="css/common.css" rel="stylesheet" />
 		<link href="css/index.css" rel="stylesheet" />
+		<link href="css/nouislider.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="css/mui.indexedlist.css" />
+		<style>
+			.mui-input-group .mui-input-row {
+				height: 60px;
+			}
+			
+			.mui-input-row.mui-input-range {
+				padding-right: 20px;
+				padding-left: 20px;
+			}
+			
+			#slider-range,#skipstep {
+				margin-top: 5px;
+				padding: 0 20px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -24,7 +40,7 @@
 				</div>
 			</div>
 		</header>
-		
+
 		<!--底栏-->
 		<nav class="mui-bar mui-bar-tab">
 			<a class="mui-tab-item mui-active" href="#tabbar" id="home"> <span class="mui-icon "></span></a>
@@ -35,13 +51,11 @@
 		</nav>
 		<!--下拉刷新容器-->
 		<div class="mui-content">
-				<!--数据列表-->
-				<ul class="mui-table-view mui-grid-view" id="myTableView">
-					
-				</ul>
+			<!--数据列表-->
+			<ul class="mui-table-view mui-grid-view" id="myTableView">
+
+			</ul>
 		</div>
-
-
 
 		<!--右上角弹出框-->
 		<div id="rightFilter" class="mui-modal">
@@ -70,13 +84,14 @@
 					<div class="mui-card">
 						<div class="mui-input-row mui-input-range">
 							<label class="input-range-label">颜色</label>
-							<span id='inline-range-val' class="inline-range-val">0</span>
-							<input type="range" id='inline-range' value="0" min="0" max="7">
+							<span id="slider-range-value" class="inline-range-val"></span>
+							<div id="slider-range"></div>
 						</div>
 						<div class="mui-input-row mui-input-range">
 							<label class="input-range-label">分数</label>
-							<span id='inline-range2-val' class="inline-range-val">0</span>
-							<input type="range" id='inline-range2' value="0" min="0" max="10">
+							<span id='skip-value-lower' class="inline-range-val"></span>
+							<span id="skip-value-upper" class="inline-range-val"></span>
+							<div id="skipstep"></div>
 						</div>
 					</div>
 				</form>
@@ -346,17 +361,18 @@
 		<script src="js/mui.min.js"></script>
 		<script src="js/mui.indexedlist.js"></script>
 		<script src="json/index.js"></script>
+		<script src="js/nouislider.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
 			mui.init({
-				 gestureConfig:{
-                    tap: true, //默认为true
-                    doubletap: true, //默认为false
-                    longtap: true, //默认为false
-                    swipe: true, //默认为true
-                    drag: true, //默认为true
-                    hold:true,//默认为false，不监听
-                    release:false//默认为false，不监听
-                }
+				gestureConfig: {
+					tap: true, //默认为true
+					doubletap: true, //默认为false
+					longtap: true, //默认为false
+					swipe: true, //默认为true
+					drag: true, //默认为true
+					hold: true, //默认为false，不监听
+					release: false //默认为false，不监听
+				}
 			});
 			mui.ready(function() {
 				var header = document.querySelector('header.mui-bar');
@@ -364,19 +380,16 @@
 				//calc hieght
 				list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
 				list.style.width = "100%"
-				//create
+					//create
 				window.indexedList = new mui.IndexedList(list);
-				
 				var myTableView = document.getElementById('myTableView');
-				myTableView.addEventListener("swipeleft",function(){
+				myTableView.addEventListener("swipeleft", function() {
 					console.log("你正在向左滑动");
 				});
-				
-				myTableView.addEventListener("swiperight",function(){
+				myTableView.addEventListener("swiperight", function() {
 					console.log("你正在向右滑动");
 				});
 			});
-
 			//弹框禁止滚动
 			var screenHeight = document.documentElement.clientHeight;
 			var rightTop = document.getElementById("rightTop");
@@ -394,62 +407,38 @@
 					e.preventDefault();
 				}
 			});
-			//监听input事件，获取range的value值，也可以直接element.value获取该range的值，颜色档range
-			var rangeListColor = document.querySelectorAll('#inline-range');
-			for (var i = 0, len = rangeListColor.length; i < len; i++) {
-				rangeListColor[i].addEventListener('input', function() {
-					var range_val_color = this.value;
-					if (range_val_color == 1) {
-						document.getElementById('inline-range-val').innerHTML="王者";
-					}else if(range_val_color == 2){
-						document.getElementById('inline-range-val').innerHTML="钻石";
-					}else if(range_val_color == 3){
-						document.getElementById('inline-range-val').innerHTML="白金";
-					}else if(range_val_color == 4){
-						document.getElementById('inline-range-val').innerHTML="黄金";
-					}else if(range_val_color == 5){
-						document.getElementById('inline-range-val').innerHTML="白银";
-					}else if(range_val_color == 6){
-						document.getElementById('inline-range-val').innerHTML="青铜";
-					}else if(range_val_color == 7){
-						document.getElementById('inline-range-val').innerHTML="新发";
-					}else{
-						document.getElementById('inline-range-val').innerHTML=this.value;
-					}
-					}
-				);
-			}
-			//监听input事件，获取range的value值，也可以直接element.value获取该range的值，分数档range
-			var rangeListPoint = document.querySelectorAll('#inline-range2');
-			for (var i = 0, len = rangeListPoint.length; i < len; i++) {
-				rangeListPoint[i].addEventListener('input', function() {
-					var range_val_point = this.value;
-					if (range_val_point == 1) {
-						document.getElementById('inline-range2-val').innerHTML="9~10";
-					}else if(range_val_point == 2){
-						document.getElementById('inline-range2-val').innerHTML="8~9";
-					}else if(range_val_point == 3){
-						document.getElementById('inline-range2-val').innerHTML="7~8";
-					}else if(range_val_point == 4){
-						document.getElementById('inline-range2-val').innerHTML="6~7";
-					}else if(range_val_point == 5){
-						document.getElementById('inline-range2-val').innerHTML="5~6";
-					}else if(range_val_point == 6){
-						document.getElementById('inline-range2-val').innerHTML="4~5";
-					}else if(range_val_point == 7){
-						document.getElementById('inline-range2-val').innerHTML="3~4";
-					}else if(range_val_point == 8){
-						document.getElementById('inline-range2-val').innerHTML="2~3";
-					}else if(range_val_point == 9){
-						document.getElementById('inline-range2-val').innerHTML="1~2";
-					}else if(range_val_point == 10){
-						document.getElementById('inline-range2-val').innerHTML="0~1";
-					}else if(range_val_point == 0){
-						document.getElementById('inline-range2-val').innerHTML="0";
-					} 
-					}
-				);
-			}
+			//颜色档位
+			var rangeSlider = document.getElementById('slider-range');
+			noUiSlider.create(rangeSlider, {
+				start: [0],
+				step: 1,
+				range: {
+					'min': [0],
+					'max': [7]
+				}
+			});
+			var rangeSliderValueElement = document.getElementById('slider-range-value');
+			rangeSlider.noUiSlider.on('update', function(values, handle) {
+				rangeSliderValueElement.innerHTML = values[handle];
+			});
+			//分数档位
+			var skipSlider = document.getElementById('skipstep');
+			noUiSlider.create(skipSlider, {
+				connect: true,
+				range: {
+					'min': 0,
+					'max': 10
+				},
+				step: 1,
+				start: [0, 10]
+			});
+			var skipValues = [
+				document.getElementById('skip-value-lower'),
+				document.getElementById('skip-value-upper')
+			];
+			skipSlider.noUiSlider.on('update', function(values, handle) {
+				skipValues[handle].innerHTML = values[handle];
+			});
 		</script>
 	</body>
 
