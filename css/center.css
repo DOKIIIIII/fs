@@ -243,3 +243,12 @@ background-color: #EAEAEA;
 #slideNext img {
 	width: 2.5em;
 }
+.center-wrap{
+	position: relative;
+}
+#edit{
+	position: absolute;
+}
+#photoWall{
+	position: absolute;
+}
