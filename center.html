@@ -41,9 +41,15 @@
 					<!--标签-->
 					<div class="tag_name">
 						<ul>
-							<li id="ml0"><span>狂</span><a href="javascript:;" class="delIcon"><img src="images/del.png"/></a></li>
-							<li><span>炫炫</span><a href="javascript:;" class="delIcon"><img src="images/del.png"/></a></li>
-							<li><span>酷酷霸霸</span><a href="javascript:;" class="delIcon"><img src="images/del.png"/></a></li>
+							<li id="ml0"><span>狂</span>
+								<a href="javascript:;" class="delIcon"><img src="images/del.png" /></a>
+							</li>
+							<li><span>炫炫</span>
+								<a href="javascript:;" class="delIcon"><img src="images/del.png" /></a>
+							</li>
+							<li><span>酷酷霸霸</span>
+								<a href="javascript:;" class="delIcon"><img src="images/del.png" /></a>
+							</li>
 						</ul>
 						<!--添加标签-->
 						<a href="javascript:;" id="addTag"><img src="images/content/add.png" class="add_tag"></a>
@@ -65,21 +71,30 @@
 					</div>
 				</form>
 				<div class="showTag">
-					<div class="tag_name">
-						<ul>
-							<li id="ml0"><span>狂</span></li>
-							<li><span>炫炫</span></li>
-							<li><span>酷酷霸霸</span></li>
-							<li><span>酷酷霸霸</span></li>
-							<li><span>酷酷霸霸</span></li>
-						</ul>
-					</div>
+					<ul>
+						<li><span>狂</span>
+							<a href="javascript:;" class="delIcon"><img src="images/del.png" /></a>
+						</li>
+						<li><span>炫炫</span>
+							<a href="javascript:;" class="delIcon"><img src="images/del.png" /></a>
+						</li>
+						<li><span>酷酷霸霸</span>
+							<a href="javascript:;" class="delIcon"><img src="images/del.png" /></a>
+						</li>
+						<li><span>酷酷霸霸</span>
+							<a href="javascript:;" class="delIcon"><img src="images/del.png" /></a>
+						</li>
+						<li><span>酷酷霸霸</span>
+							<a href="javascript:;" class="delIcon"><img src="images/del.png" /></a>
+						</li>
+					</ul>
+					<a href="javascript:;" id="changTips">换一批</a>
 				</div>
 				<a href="javascript:;" id="slidePrev"><img src="images/content/slidePrev.png" /></a>
 				<a href="javascript:;" id="slideNext"><img src="images/content/slideNext.png" /></a>
 				<div class="center-wrap">
 					<!--编辑信息入口-->
-					<a href="javascript:;" id="edit">编辑</a>
+					<a href="#editItem" id="edit">编辑</a>
 					<!--照片墙入口-->
 					<a href="javascript:;" id="photoWall">照片墙</a>
 					<div class="swiper-container">
@@ -101,7 +116,22 @@
 			</div>
 			<!--诱惑栏-->
 			<div class="btn">
-				<a href="">一起来嘛~</a>
+				<a href="javascript:;" id="getInfo">一起来嘛~</a>
+				<div class="personalInfo">
+					<div class="mui-card" style="margin: 0;">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								QQ号：89387498378
+							</li>
+							<li class="mui-table-view-cell">
+								手机号：1284748573
+							</li>
+							<li class="mui-table-view-cell">
+								陌陌号：907479
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 			<div class="infoNum">
 				<div class="col like">
@@ -125,6 +155,35 @@
 						34356
 					</p>
 				</div>
+			</div>
+			<div class="mui-modal" id="editItem">
+				<header class="mui-bar mui-bar-nav" style="position: static;">
+					<a class="mui-icon mui-icon-close mui-pull-right" href="#editItem"></a>
+					<h1 class="mui-title">编辑信息</h1>
+				</header>
+				<form class="mui-input-group">
+					<div class="mui-input-row">
+						<label>昵称</label>
+						<input type="text" class="mui-input-clear">
+					</div>
+					<div class="mui-input-row">
+						<label>年龄</label>
+						<input type="text" class="mui-input-clear">
+					</div>
+
+					<div class="mui-input-row">
+						<label>城市</label>
+						<input type="text" class="mui-input-clear">
+					</div>
+					<div class="mui-input-row">
+						<label>星座</label>
+						<input type="text" class="mui-input-clear">
+					</div>
+				</form>
+				<div class="mui-input-row" style="margin: 10px 5px;">
+					<textarea id="textarea" rows="5" placeholder="个性签名"></textarea>
+				</div>
+				<button type="button" class="mui-btn mui-btn-success mui-btn-block">提交</button>
 			</div>
 		</div>
 		<script src="js/mui.min.js"></script>
@@ -160,29 +219,29 @@
 				// 如果需要滚动条
 				scrollbar: '.swiper-scrollbar',
 			})
-			 $('#slidePrev').click(function() {
+			$('#slidePrev').click(function() {
 				mySwiper.slidePrev();
 			})
-			 $('#slideNext').click(function() {
-				mySwiper.slideNext();
-			})
-			 //添加标签
-			 var addTag = document.getElementById("addTag");
-			 var add_tag_cancel = document.getElementById("add_tag_cancel");
-			 var add_tag_submit = document.getElementById("add_tag_submit");getTag
-			 addTag.addEventListener("tap", function() {
+			$('#slideNext').click(function() {
+					mySwiper.slideNext();
+				})
+				//添加标签
+			var addTag = document.getElementById("addTag");
+			var add_tag_cancel = document.getElementById("add_tag_cancel");
+			var add_tag_submit = document.getElementById("add_tag_submit");
+			getTag
+			addTag.addEventListener("tap", function() {
 				$(".add_tag_input").show();
 			});
-		    //取消输入
+			//取消输入
 			add_tag_cancel.addEventListener("tap", function() {
 				$(".add_tag_input").hide();
 			});
 			//确认添加标签
 			add_tag_submit.addEventListener("tap", function() {
 				$.ajax({
-					type:"post",
-					url:"",
-					async:true
+					type: "post",
+					url: ""
 				});
 			});
 			//查看标签
@@ -191,9 +250,17 @@
 				$(".showTag").show();
 			});
 			//删除标签
-			$(".delIcon").on('click',function(){
-				$(this).parent();
-			})
+			$(".delIcon").on('click', function() {
+				})
+				//换标签
+			var changTips = document.getElementById("changTips");
+			changTips.addEventListener("tap", function() {
+				})
+				//弹出消息 还需判断是否缴费用户
+			var getInfo = document.getElementById("getInfo");
+			getInfo.addEventListener("tap", function() {
+				$(".personalInfo").show();
+			});
 		</script>
 	</body>
 

@@ -197,8 +197,29 @@ header {
 	z-index: 9999;
 	width: 100%;
 	display: none;
+	background-color: #F3F3F3;
 }
-
+.showTag ul{
+	    width: 90%;
+    margin: 0 auto;
+}
+.showTag ul li{
+margin: 5px 2px;
+    position: relative;
+    background-color: #EAEAEA;
+    width: 30%;
+    text-align: center;
+    display: inline-block;
+    color: #444444;
+}
+#changTips{
+	display: block;
+	text-align: center;
+}
+.showTag ul li span{
+	    font-size: .6em;
+    vertical-align: middle;
+}
 .swiper-slide img {
 	width: 100%;
 	display: block;
@@ -208,18 +229,25 @@ header {
 }
 
 .btn {
-	width: 59%;
-	margin: .5em auto .5em;
+    width: 100%;
+    margin: .5em auto .5em;
+    position: relative;
 }
-
+.btn .personalInfo{
+    position: absolute;
+    display: none;
+    top: -9px;
+    width: 100%;
+}
 .btn a {
-	color: #BF558A;
-	padding: .2em 1em;
-	font-size: 1em;
-	display: block;
-	text-align: center;
-	background-color: #f9dd93;
-	font-size: .8em;
+    color: #BF558A;
+    padding: .2em 1em;
+    display: block;
+    text-align: center;
+    background-color: #f9dd93;
+    font-size: .8em;
+    width: 59%;
+    margin: 0 auto;
 }
 
 .icon {
@@ -320,10 +348,12 @@ header {
 	color: #3FB8AF;
 	left: 5px;
 	position: absolute;
+	z-index: 99;
 }
 
 #photoWall {
 	color: #3FB8AF;
 	right: 5px;
 	position: absolute;
+	z-index: 99;
 }
