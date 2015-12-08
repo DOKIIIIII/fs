@@ -23,57 +23,80 @@
 				<div class="mood">
 					<p>本大爷要炸了地球！！！不要拦我~</p>
 				</div>
-				
-			</div>		
+
+			</div>
 		</header>
 		<div class="mui_content">
 			<!--用户信息-->
 			<div class="user_info">
-					<ul>
-						<li class="name"><span>南小鸟</span></li>
-						<li class="placeName"><img src="images/content/Cursor.png" alt="" /><span>日本东京</span></li>
-						<li class="sign"><span>射手座</span></li>
-					</ul>
-				</div>
+				<ul>
+					<li class="name"><span>南小鸟</span></li>
+					<li class="placeName"><img src="images/content/Cursor.png" alt="" /><span>日本东京</span></li>
+					<li class="sign"><span>射手座</span></li>
+				</ul>
+			</div>
 			<div class="tag">
 				<div class="width90">
 					<span class="tag_icon"></span>
 					<!--标签-->
 					<div class="tag_name">
 						<ul>
-							<li id="ml0"><span>狂</span></li>
-							<li><span>炫炫</span></li>
-							<li><span>酷酷霸霸</span></li>
+							<li id="ml0"><span>狂</span><a href="javascript:;" class="delIcon"><img src="images/del.png"/></a></li>
+							<li><span>炫炫</span><a href="javascript:;" class="delIcon"><img src="images/del.png"/></a></li>
+							<li><span>酷酷霸霸</span><a href="javascript:;" class="delIcon"><img src="images/del.png"/></a></li>
 						</ul>
 						<!--添加标签-->
-						<a href="javascript:;" id="addTag"><img src="images/content/add.png" / class="add_tag"></a>
+						<a href="javascript:;" id="addTag"><img src="images/content/add.png" class="add_tag"></a>
 					</div>
 					<!--看全部标签-->
-					<a href="javascript:;" id="moreTag"><img src="images/content/more.png" / class="more_tag"></a>
+					<a href="javascript:;" id="moreTag"><img src="images/content/more.png" class="more_tag"></a>
 				</div>
 			</div>
 			<!--相册轮播图-->
 			<div class="album">
+				<form class="mui-input-group add_tag_input">
+					<div class="mui-input-row">
+						<label>标签</label>
+						<input type="text" class="mui-input-clear" id="getTag">
+					</div>
+					<div class="mui-button-row">
+						<button type="button" class="mui-btn mui-btn-primary" id="add_tag_submit">确认</button>&nbsp;&nbsp;
+						<button type="button" class="mui-btn mui-btn-danger" id="add_tag_cancel">取消</button>
+					</div>
+				</form>
+				<div class="showTag">
+					<div class="tag_name">
+						<ul>
+							<li id="ml0"><span>狂</span></li>
+							<li><span>炫炫</span></li>
+							<li><span>酷酷霸霸</span></li>
+							<li><span>酷酷霸霸</span></li>
+							<li><span>酷酷霸霸</span></li>
+						</ul>
+					</div>
+				</div>
 				<a href="javascript:;" id="slidePrev"><img src="images/content/slidePrev.png" /></a>
 				<a href="javascript:;" id="slideNext"><img src="images/content/slideNext.png" /></a>
 				<div class="center-wrap">
+					<!--编辑信息入口-->
 					<a href="javascript:;" id="edit">编辑</a>
+					<!--照片墙入口-->
 					<a href="javascript:;" id="photoWall">照片墙</a>
 					<div class="swiper-container">
-					<div class="swiper-wrapper">
-						<div class="swiper-slide">
-							<a href="" class="slide_a"><img src="images/img2.png" /></a>
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<a href="" class="slide_a"><img src="images/img3.png" /></a>
+							</div>
+							<div class="swiper-slide">
+								<a href="" class="slide_a"><img src="images/img4.png" /></a>
+							</div>
+							<div class="swiper-slide">
+								<a href="" class="slide_a"><img src="images/img5.png" /></a>
+							</div>
 						</div>
-						<div class="swiper-slide">
-							<a href="" class="slide_a"><img src="images/img2.png" /></a>
-						</div>
-						<div class="swiper-slide">
-							<a href="" class="slide_a"><img src="images/img2.png" /></a>
-						</div>
+						<!-- 如果需要滚动条 -->
+						<div class="swiper-scrollbar"></div>
 					</div>
-					<!-- 如果需要滚动条 -->
-					<div class="swiper-scrollbar"></div>
-				</div>
 				</div>
 			</div>
 			<!--诱惑栏-->
@@ -108,7 +131,17 @@
 		<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 		<script type="text/javascript" src="js/swiper.3.1.2.min.js"></script>
 		<script type="text/javascript" charset="utf-8">
-			mui.init();
+			mui.init({
+				gestureConfig: {
+					tap: true, //默认为true
+					doubletap: true, //默认为false
+					longtap: true, //默认为false
+					swipe: true, //默认为true
+					drag: true, //默认为true
+					hold: true, //默认为false，不监听
+					release: false //默认为false，不监听
+				}
+			});
 			var header_w = document.body.clientWidth;
 			var mySwiper = new Swiper('.swiper-container', {
 				direction: 'horizontal',
@@ -132,6 +165,34 @@
 			})
 			 $('#slideNext').click(function() {
 				mySwiper.slideNext();
+			})
+			 //添加标签
+			 var addTag = document.getElementById("addTag");
+			 var add_tag_cancel = document.getElementById("add_tag_cancel");
+			 var add_tag_submit = document.getElementById("add_tag_submit");getTag
+			 addTag.addEventListener("tap", function() {
+				$(".add_tag_input").show();
+			});
+		    //取消输入
+			add_tag_cancel.addEventListener("tap", function() {
+				$(".add_tag_input").hide();
+			});
+			//确认添加标签
+			add_tag_submit.addEventListener("tap", function() {
+				$.ajax({
+					type:"post",
+					url:"",
+					async:true
+				});
+			});
+			//查看标签
+			var moreTag = document.getElementById("moreTag");
+			moreTag.addEventListener("tap", function() {
+				$(".showTag").show();
+			});
+			//删除标签
+			$(".delIcon").on('click',function(){
+				$(this).parent();
 			})
 		</script>
 	</body>
