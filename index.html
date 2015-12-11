@@ -12,13 +12,10 @@
 		<link href="css/nouislider.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="css/mui.indexedlist.css" />
 		<style>
-			.mui-input-group .mui-input-row {
-				height: 60px;
-			}
-			
 			.mui-input-row.mui-input-range {
 				padding-right: 20px;
 				padding-left: 20px;
+				height: 60px;
 			}
 			
 			#slider-range,
@@ -76,20 +73,37 @@
 				<form class="mui-input-group">
 					<h5 style="text-align: center;" id="sexClick">性别选择</h5>
 					<div class="mui-card">
+						<div class="mui-input-row">
 						<div class="">
 							<label>男</label>
-							<input name="radio1" type="radio" checked>
+							<span id="" class="checkbox">
+								<a href="javascript:;" id="man"><img src="images/check.png" id="man-check"/></a>
+							</span>
+							<!--<input name="radio1" type="radio" checked>-->
 						</div>
+						</div>
+						<div class="mui-input-row">
 						<div class="">
 							<label>女</label>
-							<input name="radio1" type="radio">
+							<span id="" class="checkbox">
+								<a href="javascript:;" id="women"><img src="images/check.png" id="women-check"/></a>
+							</span>
+							<!--<input name="radio1" type="radio">-->
 						</div>
+						</div>
+						<div class="mui-input-row">
 						<div class="">
 							<label>不限</label>
-							<input name="radio1" type="radio">
+							<span id="" class="checkbox">
+								<a href="javascript:;" id="all"><img src="images/check.png" id="all-check"/></a>
+							</span>
+							<!--<input name="radio1" type="radio">-->
 						</div>
+						<!--通过复制input获取性别-->
+						<input type="hidden" name="sex" id="sex" value="" />
 					</div>
 					<h5 style="text-align: center;">档位选择</h5>
+					</div>
 					<div class="mui-card">
 						<div class="mui-input-row mui-input-range">
 							<label class="input-range-label">颜色</label>
@@ -486,11 +500,31 @@
 					skipValues[handle].innerHTML = "10";
 				}
 			});
-			//右上角筛选bug修复
-			var rightTop = document.getElementById("rightTop");
-			var sexClick = document.getElementById("sexClick");
-			rightTop.addEventListener("tap", function() {
-				$("#sexClick").click();
+			//性别选择   男为1 ，女为2，不限为0
+			var sex = document.getElementById("sex");
+			var man = document.getElementById("man");
+			var women = document.getElementById("women");
+			var all = document.getElementById("all");
+			var manCheck = document.getElementById("man-check");
+			var womenCheck = document.getElementById("women-check");
+			var allheck = document.getElementById("all-check");
+			man.addEventListener("tap",function(){
+				sex.value = 1;
+				manCheck.src="images/checked.png";
+				womenCheck.src="images/check.png";
+				allheck.src="images/check.png";
+			});
+			women.addEventListener("tap",function(){
+				sex.value = 2;
+				manCheck.src="images/check.png";
+				womenCheck.src="images/checked.png";
+				allheck.src="images/check.png";
+			});
+			all.addEventListener("tap",function(){
+				sex.value = 0;
+				manCheck.src="images/check.png";
+				womenCheck.src="images/check.png";
+				allheck.src="images/checked.png";
 			});
 			//上拉加载
 			$(function() {

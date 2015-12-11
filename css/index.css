@@ -219,3 +219,8 @@ body .mui-input-row .input-range-label{
 .mui-btn-block{
 	padding: 10px;
 }
+.checkbox{
+	    float: right;
+    margin-right: 10%;
+    margin-top: 2%;
+}
