@@ -3014,7 +3014,7 @@ select:focus
 }
 .mui-radio input[type='radio'][disabled]:before, .mui-checkbox input[type='checkbox'][disabled]:before
 {
-    opacity: .3;
+    
 }
 .mui-radio input[type='radio']:before, .mui-checkbox input[type='checkbox']:before
 {

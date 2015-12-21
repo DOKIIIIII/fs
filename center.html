@@ -96,11 +96,11 @@
 					<!--编辑信息入口-->
 					<a href="#editItem" id="edit">编辑</a>
 					<!--照片墙入口-->
-					<a href="javascript:;" id="photoWall">照片墙</a>
+					<a href="#photoWall-modal" id="photoWall">照片墙</a>
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
 							<div class="swiper-slide">
-								<a href="#" class="slide_a"><img src="images/img3.png" /></a>
+								<a href="#" class="slide_a"><img src="images/img4.png" /></a>
 							</div>
 							<div class="swiper-slide">
 								<a href="#" class="slide_a"><img src="images/img4.png" /></a>
@@ -156,6 +156,113 @@
 					</p>
 				</div>
 			</div>
+			<!--照片墙-->
+			<div id="photoWall-modal" class="mui-modal">
+				<header class="mui-bar mui-bar-nav">
+					<a class="mui-icon mui-icon-close mui-pull-right" href="#photoWall-modal"></a>
+					<h1 class="mui-title">个人相册</h1>
+					<a id='done' class="mui-btn mui-btn-link mui-pull-left mui-btn-blue mui-disabled">完成</a>
+					<a id='delImg' class="mui-btn mui-btn-link mui-pull-left mui-btn-blue">编辑</a>
+				</header>
+				<div class="mui-content" style="height: 100%;">
+					<div class="mui-scroll-wrapper top44">
+						<div class="mui-scroll mui-popover-action">
+
+							<ul class="mui-table-view mui-grid-view ">
+
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 mui-checkbox">
+									<input type="checkbox" id="photoWall-checkbox" disabled="disabled">
+									<a href="#">
+										<div class="image-cell"><img src="images/img4.png" alt=""></div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 mui-checkbox">
+									<input type="checkbox" id="photoWall-checkbox" disabled="disabled">
+									<a href="#">
+										<div class="image-cell"><img src="images/img4.png" alt=""></div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 mui-checkbox">
+									<input type="checkbox" id="photoWall-checkbox" disabled="disabled">
+									<a href="#">
+										<div class="image-cell"><img src="images/img4.png" alt=""></div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 mui-checkbox">
+									<input type="checkbox" id="photoWall-checkbox" disabled="disabled">
+									<a href="#">
+										<div class="image-cell"><img src="images/img4.png" alt=""></div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 mui-checkbox">
+									<input type="checkbox" id="photoWall-checkbox" disabled="disabled">
+									<a href="#">
+										<div class="image-cell"><img src="images/img4.png" alt=""></div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 mui-checkbox">
+									<input type="checkbox" id="photoWall-checkbox" disabled="disabled">
+									<a href="#">
+										<div class="image-cell"><img src="images/img4.png" alt=""></div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 mui-checkbox">
+									<input type="checkbox" id="photoWall-checkbox" disabled="disabled">
+									<a href="#">
+										<div class="image-cell"><img src="images/img4.png" alt=""></div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 mui-checkbox">
+									<input type="checkbox" id="photoWall-checkbox" disabled="disabled">
+									<a href="#">
+										<div class="image-cell"><img src="images/img4.png" alt=""></div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 mui-checkbox">
+									<input type="checkbox" id="photoWall-checkbox" disabled="disabled">
+									<a href="#">
+										<div class="image-cell"><img src="images/img4.png" alt=""></div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 mui-checkbox">
+									<input type="checkbox" id="photoWall-checkbox" disabled="disabled">
+									<a href="#">
+										<div class="image-cell"><img src="images/img4.png" alt=""></div>
+									</a>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3 mui-checkbox">
+									<input type="checkbox" id="photoWall-checkbox" disabled="disabled">
+									<a href="#">
+										<div class="image-cell"><img src="images/img4.png" alt=""></div>
+									</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--照片墙选项-->
+			<div id="picture" class="mui-popover mui-popover-action mui-popover-bottom">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a href="#">转到详情页</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#">置顶</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#">删除</a>
+					</li>
+				</ul>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a href="#picture"><b>取消</b></a>
+					</li>
+				</ul>
+			</div>
+			<!--照片墙end-->
+
 			<div class="mui-modal" id="editItem">
 				<header class="mui-bar mui-bar-nav" style="position: static;">
 					<a class="mui-icon mui-icon-close mui-pull-right" href="#editItem"></a>
@@ -250,16 +357,92 @@
 				$(".showTag").show();
 			});
 			//删除标签
-			$(".delIcon").on('click', function() {
-				})
+			$(".delIcon").on('click', function() {})
 				//换标签
 			var changTips = document.getElementById("changTips");
-			changTips.addEventListener("tap", function() {
-				})
+			changTips.addEventListener("tap", function() {})
 				//弹出消息 还需判断是否缴费用户
 			var getInfo = document.getElementById("getInfo");
 			getInfo.addEventListener("tap", function() {
 				$(".personalInfo").show();
+			});
+			//弹窗滑动
+			mui.ready(function() {
+				mui('.mui-scroll-wrapper').scroll();
+			});
+			//照片墙选项
+			function photoWallItem() {
+				mui('body').on('tap', '.mui-popover-action li>a', function() {
+					var a = this,
+						parent;
+					//根据点击按钮，反推当前是哪个actionsheet
+					//			for (parent = a.parentNode; parent != document.body; parent = parent.parentNode) {
+					//				if (parent.classList.contains('mui-popover-action')) {
+					//					break;
+					//				}
+					//			}
+					//			//关闭actionsheet
+					//			mui('#' + parent.id).popover('toggle');
+					//			info.innerHTML = "你刚点击了\"" + a.innerHTML + "\"按钮";
+					mui('#picture').popover('toggle');
+				})
+			}
+			//群删照片
+			var delImgFlag = 0;
+			var delImg = document.getElementById("delImg");
+			var done = document.getElementById("done");
+			var photoWall_checkbox = mui("input[type=checkbox]");
+			//开启群删功能
+			delImg.addEventListener("tap", function() {
+				if (delImgFlag == 0) {
+					delImgFlag++;
+					mui.each(photoWall_checkbox, function(index, item) {
+						photoWall_checkbox[index].className = "checkboxIn";
+						photoWall_checkbox[index].disabled = "";
+						done.className = done.className.replace(/(?:^|\s)mui-disabled(?!\S)/g, '')
+					})
+				} else {
+					delImgFlag--;
+					mui.each(photoWall_checkbox, function(index, item) {
+						photoWall_checkbox[index].classList.remove("checkboxIn") ;
+						photoWall_checkbox[index].disabled = "disabled";
+						photoWall_checkbox[index].checked = false;
+						done.innerText = "完成";
+						done.classList.add("mui-disabled");
+					})
+				}
+			})
+			//群删功能完成
+			done.addEventListener('tap', function() {
+				var checkboxArray = [].slice.call(mui('input[type="checkbox"]'));
+				var checkedValues = [];
+				//遍历checkbox
+				checkboxArray.forEach(function(box) {
+					//被选中的checkbox
+					if (box.checked) {
+						checkedValues.push(box.parentNode.innerText);
+					}
+				});
+				//发送请求
+				if (checkedValues.length > 0) {
+					mui.alert("发送请求");
+				} else {
+					mui.alert('你还没选择');
+				}
+			}, false);
+			mui('#photoWall-modal').on('change', 'input', function() {
+				var count = mui('input[type="checkbox"]:checked').length;
+				var value = count ? "完成(" + count + ")" : "完成";
+				done.innerHTML = value;
+				if (count) {
+					if (done.classList.contains("mui-disabled")) {
+						done.classList.remove("mui-disabled");
+					}
+				} else {
+					if (!done.classList.contains("mui-disabled")) {
+						done.classList.add("mui-disabled");
+					}
+				}
 			});
 		</script>
 	</body>

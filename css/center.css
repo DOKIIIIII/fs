@@ -324,13 +324,13 @@ margin: 5px 2px;
 
 #slidePrev {
 	position: absolute;
-	z-index: 10000;
+	z-index: 55;
 	top: 40%;
 }
 
 #slideNext {
 	position: absolute;
-	z-index: 10000;
+	z-index: 55;
 	top: 40%;
 	right: 0;
 }
@@ -356,4 +356,19 @@ margin: 5px 2px;
 	right: 5px;
 	position: absolute;
 	z-index: 99;
+}
+.image-cell img {
+    width: 100%;
+}
+.mui-modal {
+    z-index: 100;
+}
+.top44{
+	top: 44px;
+}
+.checkboxIn{
+	z-index: 101;
+}
+.mui-table-view-cell.mui-checkbox input[type=checkbox]{
+	right: 0;
 }
