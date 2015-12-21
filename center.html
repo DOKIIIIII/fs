@@ -246,13 +246,13 @@
 			<div id="picture" class="mui-popover mui-popover-action mui-popover-bottom">
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell">
-						<a href="#">转到详情页</a>
+						<a href="javascript:;" id="photoWallItem-toDetail">转到详情页</a>
 					</li>
 					<li class="mui-table-view-cell">
-						<a href="#">置顶</a>
+						<a href="javascript:;" id="photoWallItem-upTop">置顶</a>
 					</li>
 					<li class="mui-table-view-cell">
-						<a href="#">删除</a>
+						<a href="javascript:;" id="photoWallItem-del">删除</a>
 					</li>
 				</ul>
 				<ul class="mui-table-view">
@@ -371,23 +371,16 @@
 				mui('.mui-scroll-wrapper').scroll();
 			});
 			//照片墙选项
-			function photoWallItem() {
-				mui('body').on('tap', '.mui-popover-action li>a', function() {
-					var a = this,
-						parent;
-					//根据点击按钮，反推当前是哪个actionsheet
-					//			for (parent = a.parentNode; parent != document.body; parent = parent.parentNode) {
-					//				if (parent.classList.contains('mui-popover-action')) {
-					//					break;
-					//				}
-					//			}
-					//			//关闭actionsheet
-					//			mui('#' + parent.id).popover('toggle');
-					//			info.innerHTML = "你刚点击了\"" + a.innerHTML + "\"按钮";
-					mui('#picture').popover('toggle');
-				})
+			function photoWallItemToggle(){
+				mui('#picture').popover('toggle');
 			}
-			//群删照片
+			function photoWallItem() {
+				mui('body').on('tap', '.mui-popover-action li>a', photoWallItemToggle)
+			}
+			function photoWallItemOff() {
+				mui('body').off('tap', '.mui-popover-action li>a', photoWallItemToggle)
+			}
+			photoWallItem();
 			var delImgFlag = 0;
 			var delImg = document.getElementById("delImg");
 			var done = document.getElementById("done");
@@ -401,6 +394,7 @@
 						photoWall_checkbox[index].disabled = "";
 						done.className = done.className.replace(/(?:^|\s)mui-disabled(?!\S)/g, '')
 					})
+					photoWallItemOff();
 				} else {
 					delImgFlag--;
 					mui.each(photoWall_checkbox, function(index, item) {
@@ -410,6 +404,7 @@
 						done.innerText = "完成";
 						done.classList.add("mui-disabled");
 					})
+					photoWallItem();
 				}
 			})
 			//群删功能完成
@@ -420,6 +415,7 @@
 				checkboxArray.forEach(function(box) {
 					//被选中的checkbox
 					if (box.checked) {
+						//把那个什么图片IDpush进去
 						checkedValues.push(box.parentNode.innerText);
 					}
 				});
