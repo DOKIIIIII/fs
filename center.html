@@ -133,6 +133,7 @@
 					</div>
 				</div>
 			</div>
+			<!--诱惑栏end-->
 			<div class="infoNum">
 				<div class="col like">
 					<div class="icon like_bg"></div>
@@ -156,6 +157,7 @@
 					</p>
 				</div>
 			</div>
+
 			<!--照片墙-->
 			<div id="photoWall-modal" class="mui-modal">
 				<header class="mui-bar mui-bar-nav">
@@ -242,6 +244,7 @@
 					</div>
 				</div>
 			</div>
+
 			<!--照片墙选项-->
 			<div id="picture" class="mui-popover mui-popover-action mui-popover-bottom">
 				<ul class="mui-table-view">
@@ -270,6 +273,12 @@
 				</header>
 				<form class="mui-input-group">
 					<div class="mui-input-row">
+						<label for="inputImage" class="">头像
+						<input type="file" class="sr-only" id="inputImage" name="file" accept="image/*" capture="camera">
+						<img src="images/img2.png" alt="" data-preview-src="" data-preview-group="1" class="edit_headImg">
+						</label>
+					</div>
+					<div class="mui-input-row">
 						<label>昵称</label>
 						<input type="text" class="mui-input-clear">
 					</div>
@@ -295,6 +304,8 @@
 		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+		<script src="js/mui.zoom.js"></script>
+		<script src="js/mui.previewimage.js"></script>
 		<script type="text/javascript" src="js/swiper.3.1.2.min.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			mui.init({
@@ -308,6 +319,7 @@
 					release: false //默认为false，不监听
 				}
 			});
+			mui.previewImage();//放大图片全屏显示
 			var header_w = document.body.clientWidth;
 			var mySwiper = new Swiper('.swiper-container', {
 				direction: 'horizontal',
@@ -381,11 +393,11 @@
 				mui('body').off('tap', '.mui-popover-action li>a', photoWallItemToggle)
 			}
 			photoWallItem();
+			//开启群删功能
 			var delImgFlag = 0;
 			var delImg = document.getElementById("delImg");
 			var done = document.getElementById("done");
 			var photoWall_checkbox = mui("input[type=checkbox]");
-			//开启群删功能
 			delImg.addEventListener("tap", function() {
 				if (delImgFlag == 0) {
 					delImgFlag++;
