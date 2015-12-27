@@ -393,11 +393,14 @@ header {
 }
 
 .edit_headImg {
-	width: 38px;
-	height: 38px;
-	margin-top: 2px;
-	float: right;
-	margin-right: 10%;
+    width: 38px;
+    height: 38px;
+    margin-top: 10px;
+    float: right;
+    margin-right: 10%;
+    border: 1px solid #eaeaea;
+    position: relative;
+    z-index: 101;
 }
 
 
@@ -571,4 +574,11 @@ header {
 	100% {
 		opacity: 0;
 	}
+}
+#editItem  .mui-input-group .height60{
+	height: 60px;
+}
+#upload_headImg{
+	display: block;
+	height: 60px;
 }

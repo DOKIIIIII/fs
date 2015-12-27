@@ -272,11 +272,13 @@
 					<h1 class="mui-title">编辑信息</h1>
 				</header>
 				<form class="mui-input-group">
-					<div class="mui-input-row">
-						<label for="inputImage" class="">头像
-						<input type="file" class="sr-only" id="inputImage" name="file" accept="image/*" capture="camera">
-						<img src="images/img2.png" alt="" data-preview-src="" data-preview-group="1" class="edit_headImg">
-						</label>
+					<div class="mui-input-row height60">
+						<a href="javascript:;" id="upload_headImg">
+							<label for="inputImage" class="">头像
+								<!--<input type="file" class="sr-only" id="inputImage" name="file" accept="image/*" capture="camera">-->
+							</label>
+							<img src="images/img2.png" alt="" data-preview-src="" data-preview-group="1" class="edit_headImg">
+						</a>
 					</div>
 					<div class="mui-input-row">
 						<label>昵称</label>
@@ -307,6 +309,7 @@
 		<script src="js/mui.zoom.js"></script>
 		<script src="js/mui.previewimage.js"></script>
 		<script type="text/javascript" src="js/swiper.3.1.2.min.js"></script>
+		<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			mui.init({
 				gestureConfig: {
@@ -319,7 +322,52 @@
 					release: false //默认为false，不监听
 				}
 			});
-			mui.previewImage();//放大图片全屏显示
+			
+			 wx.config({
+	            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+	            appId: 'wx91284518da74e4d6', // 必填，公众号的唯一标识
+	            timestamp: '123456', // 必填，生成签名的时间戳
+	            nonceStr: '123456', // 必填，生成签名的随机串
+	            signature: 'ee72785c55495db7ed3e4bec5f1228622829c769',// 必填，签名，见附录1
+	            jsApiList: ['chooseImage','uploadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+	            });
+	        
+	        function upload(){
+        	wx.chooseImage({
+        	    count: 1, // 默认9
+        	    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        	    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        	    success: function (res) {
+        	        var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+        	        for(var i = 0; i < localIds.length; i++)
+        	        {
+        	        	wx.uploadImage({
+        		            localId: localIds[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+        		            isShowProgressTips: 1, // 默认为1，显示进度提示
+        		            success: function (res) {
+        		                var serverId = res.serverId; // 返回图片的服务器端ID
+        		                $.ajax({
+        		                	   type: "POST",
+        		                	   url: "/download/saveImageToDisk",
+        		                	   data: "mediaId="+serverId,
+        		                	   success: function(msg){
+        		                		   //alert(msg.test);
+        		                	   }
+        		                });
+        		            }
+        		        });
+        	        }
+        	    }
+        	});
+        }
+	        
+	        document.getElementById("upload_headImg").addEventListener("tap",function(){
+        	upload();
+        });
+        
+	        //放大图片全屏显示
+			mui.previewImage();
+			
 			var header_w = document.body.clientWidth;
 			var mySwiper = new Swiper('.swiper-container', {
 				direction: 'horizontal',
