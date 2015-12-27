@@ -322,52 +322,48 @@
 					release: false //默认为false，不监听
 				}
 			});
+			wx.config({
+				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+				appId: 'wx91284518da74e4d6', // 必填，公众号的唯一标识
+				timestamp: '123456', // 必填，生成签名的时间戳
+				nonceStr: '123456', // 必填，生成签名的随机串
+				signature: 'ee72785c55495db7ed3e4bec5f1228622829c769', // 必填，签名，见附录1
+				jsApiList: ['chooseImage', 'uploadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			});
 			
-			 wx.config({
-	            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-	            appId: 'wx91284518da74e4d6', // 必填，公众号的唯一标识
-	            timestamp: '123456', // 必填，生成签名的时间戳
-	            nonceStr: '123456', // 必填，生成签名的随机串
-	            signature: 'ee72785c55495db7ed3e4bec5f1228622829c769',// 必填，签名，见附录1
-	            jsApiList: ['chooseImage','uploadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-	            });
-	        
-	        function upload(){
-        	wx.chooseImage({
-        	    count: 1, // 默认9
-        	    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-        	    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-        	    success: function (res) {
-        	        var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-        	        for(var i = 0; i < localIds.length; i++)
-        	        {
-        	        	wx.uploadImage({
-        		            localId: localIds[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-        		            isShowProgressTips: 1, // 默认为1，显示进度提示
-        		            success: function (res) {
-        		                var serverId = res.serverId; // 返回图片的服务器端ID
-        		                $.ajax({
-        		                	   type: "POST",
-        		                	   url: "/download/saveImageToDisk",
-        		                	   data: "mediaId="+serverId,
-        		                	   success: function(msg){
-        		                		   //alert(msg.test);
-        		                	   }
-        		                });
-        		            }
-        		        });
-        	        }
-        	    }
-        	});
-        }
-	        
-	        document.getElementById("upload_headImg").addEventListener("tap",function(){
-        	upload();
-        });
-        
-	        //放大图片全屏显示
+			document.getElementById("upload_headImg").addEventListener("tap", function() {
+				upLoadHeadImg();
+			});
+
+			function upLoadHeadImg() {
+				wx.chooseImage({
+					count: 1, // 默认9
+					sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+					sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+					success: function(res) {
+						var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+						for (var i = 0; i < localIds.length; i++) {
+							wx.uploadImage({
+								localId: localIds[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+								isShowProgressTips: 1, // 默认为1，显示进度提示
+								success: function(res) {
+									var serverId = res.serverId; // 返回图片的服务器端ID
+									$.ajax({
+										type: "POST",
+										url: "/download/saveImageToDisk",
+										data: "mediaId=" + serverId,
+										success: function(msg) {
+											//alert(msg.test);
+										}
+									});
+								}
+							});
+						}
+					}
+				});
+			}
+			//放大图片全屏显示
 			mui.previewImage();
-			
 			var header_w = document.body.clientWidth;
 			var mySwiper = new Swiper('.swiper-container', {
 				direction: 'horizontal',
@@ -431,12 +427,14 @@
 				mui('.mui-scroll-wrapper').scroll();
 			});
 			//照片墙选项
-			function photoWallItemToggle(){
+			function photoWallItemToggle() {
 				mui('#picture').popover('toggle');
 			}
+
 			function photoWallItem() {
 				mui('body').on('tap', '.mui-popover-action li>a', photoWallItemToggle)
 			}
+
 			function photoWallItemOff() {
 				mui('body').off('tap', '.mui-popover-action li>a', photoWallItemToggle)
 			}
@@ -447,27 +445,27 @@
 			var done = document.getElementById("done");
 			var photoWall_checkbox = mui("input[type=checkbox]");
 			delImg.addEventListener("tap", function() {
-				if (delImgFlag == 0) {
-					delImgFlag++;
-					mui.each(photoWall_checkbox, function(index, item) {
-						photoWall_checkbox[index].className = "checkboxIn";
-						photoWall_checkbox[index].disabled = "";
-						done.className = done.className.replace(/(?:^|\s)mui-disabled(?!\S)/g, '')
-					})
-					photoWallItemOff();
-				} else {
-					delImgFlag--;
-					mui.each(photoWall_checkbox, function(index, item) {
-						photoWall_checkbox[index].classList.remove("checkboxIn") ;
-						photoWall_checkbox[index].disabled = "disabled";
-						photoWall_checkbox[index].checked = false;
-						done.innerText = "完成";
-						done.classList.add("mui-disabled");
-					})
-					photoWallItem();
-				}
-			})
-			//群删功能完成
+					if (delImgFlag == 0) {
+						delImgFlag++;
+						mui.each(photoWall_checkbox, function(index, item) {
+							photoWall_checkbox[index].className = "checkboxIn";
+							photoWall_checkbox[index].disabled = "";
+							done.className = done.className.replace(/(?:^|\s)mui-disabled(?!\S)/g, '')
+						})
+						photoWallItemOff();
+					} else {
+						delImgFlag--;
+						mui.each(photoWall_checkbox, function(index, item) {
+							photoWall_checkbox[index].classList.remove("checkboxIn");
+							photoWall_checkbox[index].disabled = "disabled";
+							photoWall_checkbox[index].checked = false;
+							done.innerText = "完成";
+							done.classList.add("mui-disabled");
+						})
+						photoWallItem();
+					}
+				})
+				//群删功能完成
 			done.addEventListener('tap', function() {
 				var checkboxArray = [].slice.call(mui('input[type="checkbox"]'));
 				var checkedValues = [];
