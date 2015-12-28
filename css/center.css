@@ -388,20 +388,7 @@ header {
 	right: 0;
 }
 
-.sr-only {
-	
-}
 
-.edit_headImg {
-    width: 38px;
-    height: 38px;
-    margin-top: 10px;
-    float: right;
-    margin-right: 10%;
-    border: 1px solid #eaeaea;
-    position: relative;
-    z-index: 101;
-}
 
 
 /*放大css*/
@@ -575,8 +562,43 @@ header {
 		opacity: 0;
 	}
 }
-#editItem  .mui-input-group .height60{
+
+.edit_headImg {
+    width: 38px;
+    height: 38px;
+    margin-top: 10px;
+    float: right;
+    margin-right: 10%;
+    border: 1px solid #eaeaea;
+    position: relative;
+    z-index: 103;
+}
+#editItem  .input-row{
+	position: relative;
 	height: 60px;
+	clear: left;
+    overflow: hidden;
+}
+#editItem  .input-row:after{
+	    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 15px;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    background-color: #c8c7cc;
+}
+.sr-only{
+	position: absolute;
+    width: 70%;
+    height: 50px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    opacity: 0;
+    z-index: 102;
 }
 #upload_headImg{
 	display: block;

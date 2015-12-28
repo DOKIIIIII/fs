@@ -9,6 +9,7 @@
 		<link href="css/common.css" rel="stylesheet" />
 		<link href="css/center.css" rel="stylesheet" />
 		<link rel="stylesheet" href="css/swiper.3.1.2.min.css" />
+		<link rel="stylesheet" href="css/cropper.min.css" />
 	</head>
 
 	<body>
@@ -266,19 +267,19 @@
 			</div>
 			<!--照片墙end-->
 
+			<!--编辑个人信息-->
 			<div class="mui-modal" id="editItem">
 				<header class="mui-bar mui-bar-nav" style="position: static;">
 					<a class="mui-icon mui-icon-close mui-pull-right" href="#editItem"></a>
 					<h1 class="mui-title">编辑信息</h1>
 				</header>
 				<form class="mui-input-group">
-					<div class="mui-input-row height60">
-						<a href="javascript:;" id="upload_headImg">
-							<label for="inputImage" class="">头像
-								<!--<input type="file" class="sr-only" id="inputImage" name="file" accept="image/*" capture="camera">-->
-							</label>
+					<div class="input-row">
+						<label id="upload_headImg" for="inputImage">
+							<input type="file" class="sr-only" id="inputImage" name="file" accept="image/*" capture="camera">
+							<span class="input-row-title">头像</span>
 							<img src="images/img2.png" alt="" data-preview-src="" data-preview-group="1" class="edit_headImg">
-						</a>
+						</label>
 					</div>
 					<div class="mui-input-row">
 						<label>昵称</label>
@@ -303,13 +304,22 @@
 				</div>
 				<button type="button" class="mui-btn mui-btn-success mui-btn-block">提交</button>
 			</div>
+
+			<div class="mui-modal" id="cropper">
+				<div class="img-container">
+					<img src="" alt="Picture">
+				</div>
+			</div>
+			<!--编辑个人信息end-->
 		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 		<script src="js/mui.zoom.js"></script>
 		<script src="js/mui.previewimage.js"></script>
 		<script type="text/javascript" src="js/swiper.3.1.2.min.js"></script>
-		<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script type="text/javascript" src="js/cropper.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<!--<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->
 		<script type="text/javascript" charset="utf-8">
 			mui.init({
 				gestureConfig: {
@@ -322,46 +332,51 @@
 					release: false //默认为false，不监听
 				}
 			});
-			wx.config({
-				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-				appId: 'wx91284518da74e4d6', // 必填，公众号的唯一标识
-				timestamp: '123456', // 必填，生成签名的时间戳
-				nonceStr: '123456', // 必填，生成签名的随机串
-				signature: '6fc4ec043954f38f79aaba062bdb5904ba7c0fec', // 必填，签名，见附录1
-				jsApiList: ['chooseImage', 'uploadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			mui.ready(function() {
+				//弹窗滑动
+				mui('.mui-scroll-wrapper').scroll();
 			});
-			
-			document.getElementById("upload_headImg").addEventListener("tap", function() {
-				upLoadHeadImg();
-			});
-
-			function upLoadHeadImg() {
-				wx.chooseImage({
-					count: 1, // 默认9
-					sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-					sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-					success: function(res) {
-						var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-						for (var i = 0; i < localIds.length; i++) {
-							wx.uploadImage({
-								localId: localIds[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-								isShowProgressTips: 1, // 默认为1，显示进度提示
-								success: function(res) {
-									var serverId = res.serverId; // 返回图片的服务器端ID
-									$.ajax({
-										type: "POST",
-										url: "/download/saveImageToDisk",
-										data: "mediaId=" + serverId,
-										success: function(msg) {
-											//alert(msg.test);
-										}
-									});
-								}
-							});
-						}
-					}
-				});
-			}
+			//屏蔽微信调用图像接口，2015-12-28
+			//			wx.config({
+			//				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+			//				appId: 'wx91284518da74e4d6', // 必填，公众号的唯一标识
+			//				timestamp: '123456', // 必填，生成签名的时间戳
+			//				nonceStr: '123456', // 必填，生成签名的随机串
+			//				signature: '25160a12e1f72a2e0177edec8bf89770533359dc', // 必填，签名，见附录1
+			//				jsApiList: ['chooseImage', 'uploadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			//			});
+			//			
+			//			document.getElementById("upload_headImg").addEventListener("tap", function() {
+			//				upLoadHeadImg();
+			//			});
+			//
+			//			function upLoadHeadImg() {
+			//				wx.chooseImage({
+			//					count: 1, // 默认9
+			//					sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+			//					sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+			//					success: function(res) {
+			//						var localIds = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+			//						for (var i = 0; i < localIds.length; i++) {
+			//							wx.uploadImage({
+			//								localId: localIds[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+			//								isShowProgressTips: 1, // 默认为1，显示进度提示
+			//								success: function(res) {
+			//									var serverId = res.serverId; // 返回图片的服务器端ID
+			//									$.ajax({
+			//										type: "POST",
+			//										url: "/download/saveImageToDisk",
+			//										data: "mediaId=" + serverId,
+			//										success: function(msg) {
+			//											//alert(msg.test);
+			//										}
+			//									});
+			//								}
+			//							});
+			//						}
+			//					}
+			//				});
+			//			}
 			//放大图片全屏显示
 			mui.previewImage();
 			var header_w = document.body.clientWidth;
@@ -392,7 +407,7 @@
 			var addTag = document.getElementById("addTag");
 			var add_tag_cancel = document.getElementById("add_tag_cancel");
 			var add_tag_submit = document.getElementById("add_tag_submit");
-			getTag
+			var getTag = document.getElementById("getTag");
 			addTag.addEventListener("tap", function() {
 				$(".add_tag_input").show();
 			});
@@ -421,10 +436,6 @@
 			var getInfo = document.getElementById("getInfo");
 			getInfo.addEventListener("tap", function() {
 				$(".personalInfo").show();
-			});
-			//弹窗滑动
-			mui.ready(function() {
-				mui('.mui-scroll-wrapper').scroll();
 			});
 			//照片墙选项
 			function photoWallItemToggle() {
@@ -498,6 +509,55 @@
 					}
 				}
 			});
+			//编辑个人头像
+			
+//			window.onload = function () {
+//
+//          'use strict';
+//          var Cropper = window.Cropper;
+//          var image = container.getElementsByTagName('img').item(0);
+//          var container = document.querySelector('.img-container');
+//			var cropper = new Cropper(image, options);
+//			
+//			window.addEventListener('DOMContentLoaded', function() {
+//				var image = document.querySelector('.img-container > img');
+//				var cropper = new Cropper(image, {
+//					viewMode: 3,
+//					dragMode: 'move',
+//					aspectRatio: 1,
+//					autoCropArea: 1,
+//					restore: false,
+//					modal: false,
+//					guides: false,
+//					highlight: false,
+//					cropBoxMovable: false,
+//					cropBoxResizable: false
+//				});
+//			});
+//			// Import image
+//			var inputImage = document.getElementById('inputImage');
+//			var URL = window.URL || window.webkitURL;
+//			var blobURL;
+//			if (URL) {
+//				inputImage.onchange = function() {
+//					var files = this.files;
+//					var file;
+//					if (cropper && files && files.length) {
+//						file = files[0];
+//						if (/^image\/\w+/.test(file.type)) {
+//							blobURL = URL.createObjectURL(file);
+//							cropper.reset().replace(blobURL);
+//							inputImage.value = null;
+//						} else {
+//							window.alert('Please choose an image file.');
+//						}
+//					}
+//				};
+//			} else {
+//				inputImage.disabled = true;
+//				inputImage.parentNode.className += ' disabled';
+//			}
+//          }
 		</script>
 	</body>
 
