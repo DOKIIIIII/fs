@@ -1,0 +1,74 @@
+.mui-bar {
+	border-bottom: 1px solid #AAAAAA;
+	z-index: 999;
+}
+.mui-bar-nav {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+#home {
+	background: url(../images/footer/Home.png) no-repeat center center;
+}
+#msg {
+	background: url(../images/footer/msg.png) no-repeat center center;
+	margin-right: 1em;
+}
+#camera {
+	background: url(../images/footer/camera.png) no-repeat center center;
+}
+#others {
+	background: url(../images/footer/others.png) no-repeat center center;
+	margin-left: 1em;
+}
+#personal {
+	background: url(../images/footer/personal.png) no-repeat center center;
+}
+.mui-bar-tab {
+	height: 40px;
+	background-color: #F9F9F9;
+}
+.mui-bar-tab .mui-tab-item {
+	height: 40px;
+}
+.header_list {
+	width: 100%;
+	margin: 0 auto;
+}
+.cityFilter{
+	width: 42.5px;
+    float: left;
+}
+#place {
+	line-height: 30px;
+}
+.header_list ul{
+	width: 100px;
+	margin: 5px auto 0;
+}
+.header_list ul li{
+	float: left;
+	margin: 5px;
+}
+.header_list ul li a{
+	
+}
+.nav{
+	width:100% ;
+	padding-left: 10px;
+	height: 25px;
+	border-bottom: 1px solid #aeaeae;
+}
+.nav ul{
+	width: 100%;
+}
+.nav ul li{
+	float: left;
+	margin-right: 11px;
+}
+.nav ul li a{
+	font-size:12px;
+}
+.click-num p{
+	text-align: center;
+	border-bottom: 1px solid #aeaeae;
+}
